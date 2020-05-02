@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container col-md-4 mt-5">
+        <div class="border rounded align-middle">
+            <div class="text-center progress-bar bg-info">
+                <h5 class="">My-pocket Login</h5>
+            </div>
+            <form action="{% url 'createItem' %}" method="post" class="p-2 mt-1">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input class="form-control" type="text" id="description" name="description" />
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input class="form-control" type="text" id="price" name="price" />
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input class="form-control" type="date" id="date" name="date" />
+                </div>
+                {% if message %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {%endif%}
+                <button type="submit" class="btn btn-primary">Add item</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

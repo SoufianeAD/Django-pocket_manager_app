@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container col-md-4 mt-5">
+        <div class="border rounded align-middle">
+            <div class="text-center progress-bar bg-info">
+                <h5 class="">My-pocket Login</h5>
+            </div>
+            <form action="{% url 'login' %}" method="post" class="p-2 mt-1">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="userName">UserName</label>
+                    <input class="form-control" type="text" id="userName" name="userName" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" />
+                </div>
+                {% if message %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {%endif%}
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
